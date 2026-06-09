@@ -3625,9 +3625,19 @@ details-disclosure > details {
     gap: 0;
   }
 
+  .image-with-text__media,
+  .image-with-text__media img,
+  .multicolumn-card__image-wrapper,
+  .multicolumn-card__image-wrapper img,
+  .media > img {
+    object-position: center center;
+  }
+
   .image-with-text__content {
+    align-items: center;
     min-height: 0;
     padding: 2.4rem 1.5rem 3.2rem;
+    text-align: center;
   }
 
   .image-with-text__heading {
@@ -3649,10 +3659,20 @@ details-disclosure > details {
   .multicolumn .title {
     font-size: 2.4rem;
     line-height: 1.15;
+    text-align: center;
   }
 
   .multicolumn-list {
     row-gap: 2rem;
+  }
+
+  .multicolumn-card {
+    text-align: center;
+  }
+
+  .multicolumn-card__image-wrapper {
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .multicolumn-card__info {
@@ -3668,10 +3688,21 @@ details-disclosure > details {
   .collection-hero__title {
     font-size: 3rem;
     line-height: 1.1;
+    text-align: center;
   }
 
   .collection-hero__description {
     font-size: 1.5rem;
     line-height: 1.5;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  .revela-shortcuts,
+  .revela-shortcuts p {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
   }
 }
