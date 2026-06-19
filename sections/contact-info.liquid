@@ -85,30 +85,39 @@
     text-transform: uppercase;
   }
 
-  .revela-contact__form .field {
-    margin-bottom: 1.6rem;
+  .revela-contact__form-row {
+    margin-bottom: 1.8rem;
   }
 
-  .revela-contact__form .field__input,
-  .revela-contact__form .text-area {
+  .revela-contact__form-label {
+    display: block;
+    font-size: 1.2rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(var(--color-foreground), 0.7);
+    margin-bottom: 0.6rem;
+  }
+
+  .revela-contact__form-input {
     width: 100%;
-    padding: 1.4rem 1.6rem;
-    border: 1px solid rgba(var(--color-foreground), 0.2);
+    padding: 1.2rem 1.4rem;
+    border: 1px solid rgba(var(--color-foreground), 0.22);
     background: rgba(var(--color-background), 1);
     font: inherit;
     color: rgba(var(--color-foreground), 1);
     border-radius: 4px;
+    box-sizing: border-box;
   }
 
-  .revela-contact__form .field__input:focus,
-  .revela-contact__form .text-area:focus {
+  .revela-contact__form-input:focus {
     outline: none;
     border-color: rgba(var(--color-foreground), 0.6);
   }
 
-  .revela-contact__form .text-area {
+  .revela-contact__form-textarea {
     min-height: 12rem;
     resize: vertical;
+    font-family: inherit;
   }
 
   .revela-contact__form .button {
@@ -205,54 +214,54 @@
             </div>
           {%- endif -%}
 
-          <div class="field">
+          <div class="revela-contact__form-row">
+            <label class="revela-contact__form-label" for="ContactForm-name">Name</label>
             <input
-              class="field__input"
+              class="revela-contact__form-input"
               autocomplete="name"
               type="text"
               id="ContactForm-name"
               name="contact[{{ 'templates.contact.form.name' | t }}]"
               value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
-              placeholder="{{ 'templates.contact.form.name' | t }}"
             >
           </div>
 
-          <div class="field">
+          <div class="revela-contact__form-row">
+            <label class="revela-contact__form-label" for="ContactForm-email">Email <span aria-hidden="true">*</span></label>
             <input
               autocomplete="email"
               type="email"
               id="ContactForm-email"
-              class="field__input"
+              class="revela-contact__form-input"
               name="contact[email]"
               spellcheck="false"
               autocapitalize="off"
               value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
               aria-required="true"
-              placeholder="{{ 'templates.contact.form.email' | t }} *"
               required
             >
           </div>
 
-          <div class="field">
+          <div class="revela-contact__form-row">
+            <label class="revela-contact__form-label" for="ContactForm-phone">Phone number</label>
             <input
               type="tel"
               id="ContactForm-phone"
-              class="field__input"
+              class="revela-contact__form-input"
               autocomplete="tel"
               name="contact[{{ 'templates.contact.form.phone' | t }}]"
               pattern="[0-9\-]*"
               value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
-              placeholder="{{ 'templates.contact.form.phone' | t }}"
             >
           </div>
 
-          <div class="field">
+          <div class="revela-contact__form-row">
+            <label class="revela-contact__form-label" for="ContactForm-body">Message</label>
             <textarea
               rows="6"
               id="ContactForm-body"
-              class="text-area field__input"
+              class="revela-contact__form-input revela-contact__form-textarea"
               name="contact[{{ 'templates.contact.form.comment' | t }}]"
-              placeholder="{{ 'templates.contact.form.comment' | t }}"
             >{{ form.body }}</textarea>
           </div>
 
