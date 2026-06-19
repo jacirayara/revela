@@ -16,75 +16,23 @@
         "padding_bottom": 0
       }
     },
-    "rich_text_ggUWxk": {
-      "type": "rich-text",
-      "blocks": {
-        "text_VX3Wh3": {
-          "type": "text",
-          "settings": {
-            "text": "<p><strong>Need Help With Sizing?</strong></p><p>If you're unsure about sizing or fit, send us a message and we'll gladly guide you. We'd rather help you choose the right fit the first time.</p><p> </p><p><strong>Questions About Fabrics or Styles?</strong></p><p>We're happy to assist with fabric guidance, gifting suggestions, or choosing the style best suited to your comfort and lifestyle preferences.</p><p> </p><p><strong>Looking for Something Special?</strong></p><p>We occasionally assist with personalised requests where possible. Feel free to enquire and we'll let you know what may be available.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "text_VX3Wh3"
-      ],
-      "name": "t:sections.rich-text.presets.name",
+    "contact": {
+      "type": "contact-info",
       "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "",
-        "full_width": true,
-        "padding_top": 64,
-        "padding_bottom": 64
-      }
-    },
-    "rich_text_JT9kTY": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_UHaaFN": {
-          "type": "heading",
-          "settings": {
-            "heading": "",
-            "heading_size": "h1"
-          }
-        },
-        "text_FULHyQ": {
-          "type": "text",
-          "settings": {
-            "text": "<p><strong>Address</strong></p><p>18th Street, Parkhurst, Randburg, Gauteng, 2193, South Africa</p><p> </p><p><strong>Email</strong></p><p>liezel@revela.co.za</p><p> </p><p><strong>Phone / WhatsApp</strong></p><p>+27 62 537 1869</p>"
-          }
-        }
-      },
-      "block_order": [
-        "heading_UHaaFN",
-        "text_FULHyQ"
-      ],
-      "name": "t:sections.rich-text.presets.name",
-      "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "background-2",
-        "full_width": true,
-        "padding_top": 48,
-        "padding_bottom": 48
-      }
-    },
-    "form": {
-      "type": "contact-form",
-      "settings": {
-        "heading": "",
+        "intro_heading": "Get in touch",
         "heading_size": "h1",
-        "color_scheme": "background-2",
+        "intro_text": "<p>Whether you need help with sizing, choosing a gift, or selecting the right sleepwear, we're here to help.</p>",
+        "info_heading": "Contact Revela",
+        "address": "<p>18th Street, Parkhurst, Randburg<br>Gauteng, 2193, South Africa</p>",
+        "email": "liezel@revela.co.za",
+        "whatsapp_number": "+27 62 537 1869",
+        "response_time": "We aim to respond within 1–2 business days.",
+        "form_heading": "Send us a message",
+        "color_scheme": "scheme-1",
         "padding_top": 60,
         "padding_bottom": 60
       }
     }
   },
-  "order": [
-    "main",
-    "rich_text_ggUWxk",
-    "rich_text_JT9kTY",
-    "form"
-  ]
+  "order": ["main", "contact"]
 }
