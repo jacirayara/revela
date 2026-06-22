@@ -16,7 +16,7 @@
         "heading_size": "h1",
         "intro_text": "<p>Whether you need help with sizing, choosing a gift, or selecting the right sleepwear, we're here to help.</p>",
         "info_heading": "Contact Revela",
-        "address": "<p>18th Street, Parkhurst, Randburg<br>Gauteng, 2193, South Africa</p>",
+        "address": "<p>Parkhurst, Randburg<br/>Gauteng, 2193, South Africa</p>",
         "email": "liezel@revela.co.za",
         "whatsapp_number": "+27 62 537 1869",
         "response_time": "We aim to respond within 1–2 business days.",
@@ -27,5 +27,7 @@
       }
     }
   },
-  "order": ["contact"]
+  "order": [
+    "contact"
+  ]
 }
