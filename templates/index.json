@@ -871,6 +871,35 @@
     "177737091748e9af0b": {
       "type": "_blocks",
       "settings": {}
+    },
+    "1782712118c4dd5242": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_dea0a23_kwbgD7": {
+          "type": "ai_gen_block_dea0a23",
+          "settings": {
+            "heading": "Ready to experience Revela for yourself?",
+            "button_text": "Shop Collection",
+            "button_link": "",
+            "background_color": "#FAF8F5",
+            "text_color": "#38373a",
+            "button_background": "#121212",
+            "button_hover_background": "#38373a",
+            "button_text_color": "#ffffff",
+            "heading_size": 32,
+            "button_text_size": 16,
+            "button_padding_vertical": 16,
+            "button_padding_horizontal": 40,
+            "button_radius": 0,
+            "max_width": 800
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_dea0a23_kwbgD7"
+      ],
+      "settings": {}
     }
   },
   "order": [
@@ -894,6 +923,7 @@
     "image_with_text_kbw7hE",
     "featured_blog_UaTzFA",
     "1777370081ed3c95a6",
-    "177737091748e9af0b"
+    "177737091748e9af0b",
+    "1782712118c4dd5242"
   ]
 }
