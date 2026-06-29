@@ -1,6 +1,285 @@
+{% doc %}
+  @prompt
+    Create a "Customer Love" page template for a luxury sleepwear brand (Revela Sleepwear) with the following sections:1. Hero/Featured Review Section — Full-width or large card with a single standout quote: "The most comfortable pyjamas I've ever owned. The quality is exceptional and the fit is perfect." Include customer first name, location, optional photo, and star rating (5 stars). Elegant, editorial styling with soft/neutral tones.2. Video Testimonial Section — A section directly below the hero that allows embedding a video (YouTube or Vimeo URL) with a heading like "Hear From Our Customers".3. More Customer Reviews — A grid of review cards/tiles, each with: star rating, review text, customer first name and location, and optional photo. Minimum 3 cards displayed in a responsive grid.4. Call to Action Section — Full-width CTA banner with the text "Ready to experience Revela for yourself?" and a button labelled "Shop Collection" linking to the collections page.The design should feel premium and editorial — clean typography, soft backgrounds (cream/blush tones), generous whitespace. All content should be editable via the Shopify theme editor (using schema settings). Make this a standalone page template called page.customer-love.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-featured-review-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    padding: 80px 20px;
+    background-color: {{ block.settings.background_color }};
+  }
+
+  .ai-featured-review__container-{{ ai_gen_id }} {
+    max-width: {{ block.settings.max_width }}px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .ai-featured-review__stars-{{ ai_gen_id }} {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    margin-bottom: 24px;
+  }
+
+  .ai-featured-review__star-{{ ai_gen_id }} {
+    width: {{ block.settings.star_size }}px;
+    height: {{ block.settings.star_size }}px;
+    fill: {{ block.settings.star_color }};
+  }
+
+  .ai-featured-review__quote-{{ ai_gen_id }} {
+    font-size: {{ block.settings.quote_size }}px;
+    line-height: 1.5;
+    color: {{ block.settings.text_color }};
+    margin: 0 0 32px;
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  .ai-featured-review__customer-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .ai-featured-review__photo-{{ ai_gen_id }} {
+    width: {{ block.settings.photo_size }}px;
+    height: {{ block.settings.photo_size }}px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  .ai-featured-review__photo-{{ ai_gen_id }} img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .ai-featured-review__photo-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    background-color: {{ block.settings.placeholder_bg }};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ai-featured-review__photo-placeholder-{{ ai_gen_id }} svg {
+    width: 50%;
+    height: 50%;
+    opacity: 0.3;
+  }
+
+  .ai-featured-review__name-{{ ai_gen_id }} {
+    font-size: {{ block.settings.name_size }}px;
+    color: {{ block.settings.text_color }};
+    font-weight: 500;
+    margin: 0;
+  }
+
+  .ai-featured-review__location-{{ ai_gen_id }} {
+    font-size: {{ block.settings.location_size }}px;
+    color: {{ block.settings.text_color }};
+    opacity: 0.7;
+    margin: 0;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-featured-review-{{ ai_gen_id }} {
+      padding: 60px 20px;
+    }
+
+    .ai-featured-review__quote-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.quote_size }}px * 0.8);
+    }
+  }
+{% endstyle %}
+
+<div class="ai-featured-review-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-featured-review__container-{{ ai_gen_id }}">
+    <div class="ai-featured-review__stars-{{ ai_gen_id }}">
+      {% for i in (1..5) %}
+        <svg class="ai-featured-review__star-{{ ai_gen_id }}" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+        </svg>
+      {% endfor %}
+    </div>
+
+    {% if block.settings.quote != blank %}
+      <blockquote class="ai-featured-review__quote-{{ ai_gen_id }}">
+        "{{ block.settings.quote }}"
+      </blockquote>
+    {% endif %}
+
+    <div class="ai-featured-review__customer-{{ ai_gen_id }}">
+      {% if block.settings.show_photo %}
+        <div class="ai-featured-review__photo-{{ ai_gen_id }}">
+          {% if block.settings.customer_photo %}
+            <img
+              src="{{ block.settings.customer_photo | image_url: width: 200 }}"
+              alt="{{ block.settings.customer_name | escape }}"
+              loading="lazy"
+              width="200"
+              height="200"
+            >
+          {% else %}
+            <div class="ai-featured-review__photo-placeholder-{{ ai_gen_id }}">
+              {{ 'image' | placeholder_svg_tag }}
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      {% if block.settings.customer_name != blank %}
+        <p class="ai-featured-review__name-{{ ai_gen_id }}">{{ block.settings.customer_name }}</p>
+      {% endif %}
+
+      {% if block.settings.customer_location != blank %}
+        <p class="ai-featured-review__location-{{ ai_gen_id }}">{{ block.settings.customer_location }}</p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Featured review",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Review content"
+    },
+    {
+      "type": "textarea",
+      "id": "quote",
+      "label": "Review quote",
+      "default": "The most comfortable pyjamas I've ever owned. The quality is exceptional and the fit is perfect."
+    },
+    {
+      "type": "text",
+      "id": "customer_name",
+      "label": "Customer name",
+      "default": "Sarah"
+    },
+    {
+      "type": "text",
+      "id": "customer_location",
+      "label": "Location",
+      "default": "Cape Town, South Africa"
+    },
+    {
+      "type": "header",
+      "content": "Customer photo"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_photo",
+      "label": "Show customer photo",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "customer_photo",
+      "label": "Photo"
+    },
+    {
+      "type": "range",
+      "id": "photo_size",
+      "label": "Photo size",
+      "min": 60,
+      "max": 120,
+      "step": 10,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#FAF8F5"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#38373a"
+    },
+    {
+      "type": "color",
+      "id": "star_color",
+      "label": "Star",
+      "default": "#D4AF37"
+    },
+    {
+      "type": "color",
+      "id": "placeholder_bg",
+      "label": "Placeholder background",
+      "default": "#f5f5f5"
+    },
+    {
+      "type": "range",
+      "id": "quote_size",
+      "label": "Quote size",
+      "min": 18,
+      "max": 36,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "name_size",
+      "label": "Name size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "location_size",
+      "label": "Location size",
+      "min": 12,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "star_size",
+      "label": "Star size",
+      "min": 16,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Maximum width",
+      "min": 600,
+      "max": 1200,
+      "step": 100,
+      "unit": "px",
+      "default": 800
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured review"
+    }
+  ]
+}
 {% endschema %}
