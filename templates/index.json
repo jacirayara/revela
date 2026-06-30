@@ -877,6 +877,7 @@
       "blocks": {
         "ai_gen_block_dea0a23_kwbgD7": {
           "type": "ai_gen_block_dea0a23",
+          "disabled": true,
           "settings": {
             "heading": "Ready to experience Revela for yourself?",
             "button_text": "Share your experience",
